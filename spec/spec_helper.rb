@@ -1,9 +1,12 @@
 require 'rspec'
 require 'pry'
+require 'webmock/rspec'
 
 ENV['RACK_ENV'] = 'test'
 
 require File.expand_path '../../app.rb', __FILE__
+
+WebMock.enable!
 
 RSpec.configure do |config|
   config.expect_with :rspec do |expectations|
