@@ -1,4 +1,3 @@
-require 'net/smtp'
 require 'mail'
 
 class Report

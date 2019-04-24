@@ -1,4 +1,3 @@
-require_relative 'status_request'
 class StatusTracker
   attr_reader :previous_data, :request, :report
 
