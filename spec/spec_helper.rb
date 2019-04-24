@@ -8,6 +8,10 @@ require File.expand_path '../../app.rb', __FILE__
 
 WebMock.enable!
 
+Mail.defaults do
+  delivery_method :test
+end
+
 RSpec.configure do |config|
   config.expect_with :rspec do |expectations|
     expectations.include_chain_clauses_in_custom_matcher_descriptions = true

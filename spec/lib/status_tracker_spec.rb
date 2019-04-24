@@ -3,7 +3,7 @@ require File.expand_path '../../spec_helper.rb', __FILE__
 RSpec.describe Handler do
   describe '#call' do
     let(:status_requester) { double StatusRequest }
-    let(:report_sender) { double ReportSender }
+    let(:report) { double Report }
 
     it 'launch StatusRequest' do
       data = {
@@ -14,8 +14,8 @@ RSpec.describe Handler do
       allow(status_requester).to receive(:call).and_return(data)
 
       described_class.new(
-        requester: status_requester,
-        report_sender: report_sender
+        request: status_requester,
+        report: report
       ).call
 
       expect(status_requester).to have_received(:call).once
@@ -33,16 +33,16 @@ RSpec.describe Handler do
         }
 
         allow(status_requester).to receive(:call).and_return(data)
-        allow(report_sender).to receive(:send)
+        allow(report).to receive(:send)
 
         described_class.new(
           previous_data: previous_data,
-          requester: status_requester,
-          report_sender: report_sender,
+          request: status_requester,
+          report: report,
         ).call
 
-        expect(report_sender).to have_received(:send).with(:foo, '200').once
-        expect(report_sender).not_to have_received(:send).with(:bar, '200')
+        expect(report).to have_received(:send).with(:foo, '200', '500').once
+        expect(report).not_to have_received(:send).with(:bar, '200', '200')
       end
     end
 
@@ -54,14 +54,14 @@ RSpec.describe Handler do
         }
 
         allow(status_requester).to receive(:call).and_return(data)
-        allow(report_sender).to receive(:send)
+        allow(report).to receive(:send)
 
         described_class.new(
-          requester: status_requester,
-          report_sender: report_sender
+          request: status_requester,
+          report: report
         ).call
 
-        expect(report_sender).not_to have_received(:send)
+        expect(report).not_to have_received(:send)
       end
     end
 
@@ -77,15 +77,15 @@ RSpec.describe Handler do
         }
 
         allow(status_requester).to receive(:call).and_return(data)
-        allow(report_sender).to receive(:send)
+        allow(report).to receive(:send)
 
         described_class.new(
           previous_data: previous_data,
-          requester: status_requester,
-          report_sender: report_sender
+          request: status_requester,
+          report: report
         ).call
 
-        expect(report_sender).not_to have_received(:send)
+        expect(report).not_to have_received(:send)
       end
     end
   end
