@@ -1,10 +1,13 @@
 require 'rspec'
 require 'pry'
 require 'webmock/rspec'
+require 'mail'
+
+require_relative '../config/init'
 
 ENV['RACK_ENV'] = 'test'
 
-require File.expand_path '../../app.rb', __FILE__
+include Mail::Matchers
 
 WebMock.enable!
 

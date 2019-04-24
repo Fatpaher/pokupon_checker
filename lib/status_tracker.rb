@@ -1,11 +1,11 @@
 require_relative 'status_request'
-class Handler
+class StatusTracker
   attr_reader :previous_data, :request, :report
 
-  def initialize(previous_data: {}, request: nil, report: nil)
-    @previous_data = previous_data
-    @request = request || StatusRequest.new
-    @report = report || Report.new
+  def initialize(options={})
+    @previous_data = options[:previous_data] || {}
+    @request = options[:request] || StatusRequest.new
+    @report = options[:report] || Report.new
   end
 
   def call

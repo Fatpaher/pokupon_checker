@@ -1,6 +1,6 @@
 require File.expand_path '../../spec_helper.rb', __FILE__
 
-RSpec.describe Handler do
+RSpec.describe StatusTracker do
   describe '#call' do
     let(:status_requester) { double StatusRequest }
     let(:report) { double Report }
