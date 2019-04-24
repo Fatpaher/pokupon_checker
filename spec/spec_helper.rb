@@ -2,6 +2,7 @@ require 'rspec'
 require 'pry'
 require 'webmock/rspec'
 require 'mail'
+require 'timecop'
 
 require_relative '../config/init'
 

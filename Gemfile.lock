@@ -30,6 +30,7 @@ GEM
       rspec-support (~> 3.8.0)
     rspec-support (3.8.0)
     safe_yaml (1.0.5)
+    timecop (0.9.1)
     webmock (3.5.1)
       addressable (>= 2.3.6)
       crack (>= 0.3.2)
@@ -42,6 +43,7 @@ DEPENDENCIES
   mail
   pry
   rspec
+  timecop
   webmock
 
 RUBY VERSION
