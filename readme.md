@@ -2,9 +2,9 @@
 
 # Usage
 
-Run `bundle` to install dependencies. 
+Run `bundle` to install dependencies.
 
-To send email you need to run smtp server at localhost
+To send email you need to run smtp server at localhost port 2500
 
 `ruby app.rb` - run application as script
 
