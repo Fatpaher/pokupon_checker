@@ -2,6 +2,8 @@ require File.expand_path '../../spec_helper.rb', __FILE__
 
 RSpec.describe Server do
   describe '.run' do
+    before { Mail::TestMailer.deliveries.clear }
+
     it 'works' do
       StatusRequest::URLS.map do |url|
         stub_request(
